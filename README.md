@@ -1,3 +1,5 @@
 # MiniNa
 MiniNa is a deps Mina Protocol installer , made for Noobs by Noobs
-[![MiniNa1.png](https://i.postimg.cc/2jqQGfpW/MiniNa1.png)](https://postimg.cc/Hjg8WRkW)
+[![MiniNa2.png](https://i.postimg.cc/rytvC8qY/MiniNa2.png)](https://postimg.cc/YjMntBG1)
+
+i will upload the bash script later..
