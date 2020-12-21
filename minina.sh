@@ -31,7 +31,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHO
  OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.' 0 0
  #################################################################################################################################################################################
 f5aa1fb=l0aHVidXNlcmNvbnRlbnQuY29tL01pbmFQcm90b  ## >> f5aa1fb + e2db96a part of the base64 code to ofuscate the peers url (noob proof) 
-e2db96a=3RlcnJhZm9ybS90ZXN0bmV0cy90dXJiby1waWNrbGVzL ## >> now is useless but still works :D (peers are public) check line 202
+e2db96a=3RlcnJhZm9ybS90ZXN0bmV0cy90dXJiby1waWNrbGVzL ## >> now is useless but still works :D (peers are public) check line 215
 cmd=(dialog --separate-output --checklist "[ M I n i N A 2.0 by Aki ]:" 0 0 0) \
 options=(1 "Upgrade your Machine" off    # any option can be set to default to "on"
          2 "Install Mina Repositories" off
