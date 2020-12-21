@@ -28,4 +28,5 @@ Removing temp directories and coda-config
 Notes
 * the script will detect if a wallet is storage in ~/keys folder to avoid overwrite the current ones if you select option 5 my mistake.
 
+* now after is installed run ```coda``` in your terminal or ```coda version``` to check the installation is OK.
 * Have fun !
