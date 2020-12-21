@@ -200,7 +200,7 @@ do
          --passwordbox "Enter your Mina wallet password that will be storage in ~/.mina-env" 10 30 3>&1- 1>&2- 2>&3-)
 cat <<EOF >~/.mina-env
 CODA_PRIVKEY_PASS="${MINAPASS}"
-EXTRA_FLAGS=""
+EXTRA_FLAGS=" -file-log-level Info "
 EOF
                 ## >>> add variables to .bashrc or .zshrc depends of your terminal line 171-179
 echo "export CODA_PUBLIC_KEY=${MINAADRESS}" >> "${shell_profile}" 
