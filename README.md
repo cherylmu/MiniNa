@@ -1,7 +1,7 @@
 # MiniNa: support Ubuntu and Debian
 MiniNa is a deps Mina Protocol installer , made for Noobs by Noobs
 What the script do:
-[![MiniNa2.png](https://i.postimg.cc/N0yC9KVj/MiniNa2.png)](https://postimg.cc/67XfFptk)
+[![minina2.png](https://i.postimg.cc/CK7d0yV3/minina2.png)](https://postimg.cc/CZZwCQ57)
 
 Usage:
 * First download it ```wget https://raw.githubusercontent.com/AkiAfroo/MiniNa/main/minina.sh```
