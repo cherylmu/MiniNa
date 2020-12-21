@@ -180,7 +180,7 @@ do
             ;;
         
         7)
-                ## bash or yshrc lets check it.
+                ## bash or zshrc lets check it.
            if [ -n "$($SHELL -c 'echo $BASH_VERSION')" ]; then
                 shell_profile="$HOME/.bashrc"
            elif [ -n "$($SHELL -c 'echo $ZSH_VERSION')" ]; then
