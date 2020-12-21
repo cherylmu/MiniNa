@@ -1,4 +1,4 @@
-# MiniNa
+# MiniNa: support Ubuntu and Debian
 MiniNa is a deps Mina Protocol installer , made for Noobs by Noobs
 What the script do:
 [![MiniNa2.png](https://i.postimg.cc/N0yC9KVj/MiniNa2.png)](https://postimg.cc/67XfFptk)
