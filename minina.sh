@@ -30,9 +30,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHO
  DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
  OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.' 0 0
  #################################################################################################################################################################################
-f5aa1fb=l0aHVidXNlcmNvbnRlbnQuY29tL01pbmFQcm90b  ## >> f5aa1fb + e2db96a part of the base64 code to ofuscate the peers url (noob proof) 
-e2db96a=3RlcnJhZm9ybS90ZXN0bmV0cy90dXJiby1waWNrbGVzL ## >> now is useless but still works :D (peers are public) check line 215
-cmd=(dialog --separate-output --checklist "[ M I n i N A 2.0 by Aki ]:" 0 0 0) \
+cmd=(dialog --separate-output --checklist "[ M I n i N A 2.1 for TestWorld - by Aki ]:" 0 0 0) \
 options=(1 "Upgrade your Machine" off    # any option can be set to default to "on"
          2 "Install Mina Repositories" off
          3 "Install Mina Dependencies libffi6,libjemalloc,libprocps6,etc." off
@@ -66,7 +64,8 @@ do
             ;;
         2)
             echo "adding http://packages.o1test.net to mina.list in /etc/apt/sources.list.d folder";
-            echo "deb [trusted=yes] http://packages.o1test.net release main" | sudo tee /etc/apt/sources.list.d/mina.list 2>/dev/null;
+            #echo "deb [trusted=yes] http://packages.o1test.net release main" | sudo tee /etc/apt/sources.list.d/mina.list 2>/dev/null;
+            echo "deb [trusted=yes] http://packages.o1test.net unstable main" | sudo tee /etc/apt/sources.list.d/coda.list 2>/dev/null
             ;;
         3)
             clear
@@ -95,7 +94,7 @@ do
                          cd ../..
                          rm -rf .MiniNA
                          wait
-                elif [  -n "$(uname -a | grep Debian)" ]; then
+                elif [  -n "$(cat /etc/issue | grep Debian)"  ]; then
                         echo "your system is Based on Debian..Please Wait,.."
                         sleep 5
                         mkdir -p .MiniNA/debiandeps;
@@ -115,9 +114,10 @@ do
             ;;
         4)
             echo "Installing Mina-testnet-postake|Mina-generate-keypair"
-				#TESTNET="$(curl -s https://minaprotocol.com/docs/getting-started | grep 'mina-testnet-postake-medium-curves=')" # >>> was working before.switch to manual 
-					sudo apt-get install -y curl mina-testnet-postake-medium-curves mina-generate-keypair
-						#${TESTNET}
+				TESTNET="$(curl -s https://minaprotocol.com/docs/getting-started | grep 'mina-testnet-postake-medium-curves=')" # >>> was working before.switch to manual 
+					#sudo apt-get install -y curl mina-testnet-postake-medium-curves mina-generate-keypair
+						${TESTNET}
+                        sudo apt install mina-generate-keypair
                         echo "done!"
 						sleep 5
             ;;
@@ -212,8 +212,9 @@ echo  "export MINA_PUBLIC_KEY=${MINAADRESS}" >> "${shell_profile}"
             clear
             echo ""
             echo "Downloading Latest Peers.." ### >> dont need it anymore peers are public but works and its cool
-            MINAPEERS=$(echo -n "aHR0cHM6Ly9yYXcuZ2"$f5aa1fb"2NvbC9jb2RhLWF1dG9tYXRpb24vbWFzdGVyL"$e2db96a"3BlZXJzLnR4dAo=" | base64 --decode) &&  wget -q --show-progress -O ~/peers.txt $MINAPEERS
+            wget -O ~/peers.txt https://raw.githubusercontent.com/MinaProtocol/coda-automation/bug-bounty-net/terraform/testnets/testworld/peers.txt
             sleep 3
+            clear
             echo ""
             echo "DOne, Time to Bootstrap!"
         ;; 
@@ -229,6 +230,7 @@ echo  "export MINA_PUBLIC_KEY=${MINAADRESS}" >> "${shell_profile}"
             sudo apt autoremove -y 
             sed -i '/MINA/d' "$shell_profile" 2>/dev/null # >> remove Mina varibales from .bashrc
             sed -i '/CODA/d' "$shell_profile" 2>/dev/null # >> remove coda varibales from .bashrc
+            clear
             echo ""
             echo "Done! , Mina has gone!"
         ;;
@@ -237,6 +239,7 @@ echo  "export MINA_PUBLIC_KEY=${MINAADRESS}" >> "${shell_profile}"
             echo "Removing coda-config , and coda temp folders"
             systemctl --user stop mina 2>/dev/null
             rm -rf ~/.coda-config && rm -rf /tmp/coda_cache_dir && rm -rf /tmp/s3_cache_dir
+            clear
             echo "DONe!"
        ;;
 
