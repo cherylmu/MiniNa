@@ -94,7 +94,7 @@ do
                          cd ../..
                          rm -rf .MiniNA
                          wait
-                elif [  -n "$(cat /etc/issue | grep Debian)"  ]; then
+                elif [  -n "$(uname -a | grep Debian)"  ]; then
                         echo "your system is Based on Debian..Please Wait,.."
                         sleep 5
                         mkdir -p .MiniNA/debiandeps;
