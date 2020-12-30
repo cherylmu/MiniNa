@@ -228,8 +228,8 @@ echo  "export MINA_PUBLIC_KEY=${MINAADRESS}" >> "${shell_profile}"
             sleep 5
             sudo apt purge libjemalloc-dev libjemalloc2 mina-testnet-postake-medium-curves  mina-generate-keypair -y # >>> delete mina-testnet and deps..
             sudo apt autoremove -y 
-            sed -i '/MINA/d' "$shell_profile" 2>/dev/null # >> remove Mina varibales from .bashrc
-            sed -i '/CODA/d' "$shell_profile" 2>/dev/null # >> remove coda varibales from .bashrc
+            sed -i '/MINA/d' "$shell_profile" 2>/dev/null # >> remove Mina Variables from .bashrc
+            sed -i '/CODA/d' "$shell_profile" 2>/dev/null # >> remove coda Variables from .bashrc
             clear
             echo ""
             echo "Done! , Mina has gone!"
