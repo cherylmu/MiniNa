@@ -11,7 +11,7 @@ Usage:
 * the script will try to install dialog , zip , unzip if are not installed in your system before launch the menu.
 * Fresh install after menu pop up: select with mouse or moving with arrows and using spacebar
 * options : ```1,2,3,4,5,7,8```
-[![first-install-minina.png](https://i.postimg.cc/q750w1LV/first-install-minina.png)](https://postimg.cc/yJcwYXtv)
+[![Mina-Test-World.png](https://i.postimg.cc/ZKg87sWc/Mina-Test-World.png)](https://postimg.cc/fJcSkKjt)
 
 Backup:
 * you can backup your wallet >> option 6
