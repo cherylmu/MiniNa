@@ -1,4 +1,4 @@
-# MiniNa:
+# MiniNa: is not ready for TESTWORLD.. wait for an Update
 MiniNa is a deps Mina Protocol installer , made for Noobs by Noobs
 What the script do:
 [![minina2.png](https://i.postimg.cc/CK7d0yV3/minina2.png)](https://postimg.cc/CZZwCQ57)
