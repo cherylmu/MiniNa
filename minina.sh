@@ -35,7 +35,7 @@ options=(1 "Upgrade your Machine" off    # any option can be set to default to "
          2 "Install Mina Repositories" off
          3 "Install Mina Dependencies libffi6,libjemalloc,libprocps6,etc." off
          4 "Install Mina-testnet-postake|Mina-generate-keypair" off          
-         5 "Create a New Wallet-Keys" off
+         5 "Download and Unzip your Keys.zip" off
          6	"BACKUP YOUR KEYS to $HOME/minabackups" off
          7 "Create a **.mina-env** and **.bashrc/.zshrc** Variables" off
          8 "Download Latest Mina Peers" off
@@ -65,7 +65,7 @@ do
         2)
             echo "adding http://packages.o1test.net to mina.list in /etc/apt/sources.list.d folder";
             #echo "deb [trusted=yes] http://packages.o1test.net release main" | sudo tee /etc/apt/sources.list.d/mina.list 2>/dev/null;
-            echo "deb [trusted=yes] http://packages.o1test.net unstable main" | sudo tee /etc/apt/sources.list.d/coda.list 2>/dev/null
+            echo "deb [trusted=yes] http://packages.o1test.net release main" | sudo tee /etc/apt/sources.list.d/mina.list 2>/dev/null
             ;;
         3)
             clear
@@ -94,7 +94,7 @@ do
                          cd ../..
                          rm -rf .MiniNA
                          wait
-                elif [  -n "$(uname -a | grep Debian)"  ]; then
+                elif [  -n "$(cat /etc/issue | grep Debian)"  ]; then
                         echo "your system is Based on Debian..Please Wait,.."
                         sleep 5
                         mkdir -p .MiniNA/debiandeps;
@@ -131,37 +131,52 @@ do
 				sleep 2
 				clear
 			if [[ -e $HOME/keys/my-wallet && -e $HOME/keys/my-wallet.pub ]] ;then # >>> check if wallet exist
-				echo "we found a wallet in your system, if you want to create a new wallet please Backup and move those files first"
-				echo " the script will continue but will not pop up the the screen to create a new wallet"
+				echo "we found a wallet in your system !, if you want to Download a new pairs of Keys please Backup and move those files first"
+				echo " the script will continue but will not pop up the the screen to Download your keys"
 				echo "Please wait 10.."
 				sleep 10
 				continue ## >> because one wallet was found the script jump to option 6 if was selected and keep going..
 			else
 				echo -e " $(tput bold)################################################################################ $(tput sgr0)"
 				echo ""
-				echo -e " \e[32m 	This will create two files on your system, ~/keys/my-wallet"
+				echo -e " \e[32m 	This will Download a zip file  two files on your system, ~/keys/my-wallet"
 				echo "     	which contains the encrypted private key and ~/keys/my-wallet.pub"
 				echo "        which contains the public key in plain text. Please store"
 				echo " 	the private key file and password you used in a secure place."
 				echo -e " $(tput sgr0)"
 				echo -e " $(tput bold)################################################################################ $(tput sgr0)"
+                echo ""
 				read -n 1 -s -r -p "Press any key to continue"
+                echo ""
+                echo "now we will download and unzip your keys that o(1)Labs sent to you by email"
+                read -p "Enter Full Url Link of your key.zip: " minakey_email
 				echo ""
-				mina-generate-keypair -privkey-path ~/keys/my-wallet | tee ~/MinaWallet.txt # >>> save a copy of the output inside MinaWallet.txt PD, password are not saved 
-				sed -i '/Password for new private key file/d' ~/MinaWallet.txt # >>> delete this useless line inside the file
-				sed -i '/mina-generate-keypair/d'  ~/MinaWallet.txt # >>> delete this useless line inside the file
+                mkdir -p ~/keys
+                curl -o ~/keys/new-keys.zip $minakey_email
+                cd ~/keys
+                unzip new-keys.zip
+                mv extra_fish_account_*.pub my-wallet.pub
+                mv extra_fish_account_* my-wallet
+                rm new-keys.zip
+                ### some system complains if root use sudo xD
+                if [ "${UID}" -eq 0 ]
+                then
+				chown -R $USER  ~/keys
+				chown -R $USER  ~/keys/my-wallet
+                else
+				sudo chown -R $USER  ~/keys
+				sudo chown -R $USER  ~/keys/my-wallet
+                fi
 				sudo chown -R $USER  ~/keys
 				sudo chown -R $USER  ~/keys/my-wallet
 				chmod 700 ~/keys
 				chmod 600 ~/keys/my-wallet
-				echo ""
-				echo "a copy of mina-generate-keypair output have been saved to MinaWallet.txt for easy access:"
-				echo "(this file is not part of coda daemon itself,is only for your personal use)"				
-				echo ""
-				cat ~/MinaWallet.txt
-				echo ""
-				echo ""
-				echo "  is saved in $USER/MinaWallet.txt"
+                echo ""
+                if [[ -e $HOME/keys/my-wallet && -e $HOME/keys/my-wallet.pub ]] ;then
+                echo "zip Downladed, extracted and permissions set to both files"
+                else
+                    echo "something weird has happened. dragons fly around you,"
+                fi    
 				sleep 5
 			fi
             ;;
@@ -192,12 +207,13 @@ do
 
                 # >>> reading your wallet to added later line 89-90
         MINAADRESS=$(cat ~/keys/my-wallet.pub)
-
-                # >>> asking for your mina wallet password and add it to .mina-env in Home directory
-        MINAPASS=$(dialog --title "adding your wallet Password to .mina-env" \
-         --clear \
-         --insecure \
-         --passwordbox "Enter your Mina wallet password that will be storage in ~/.mina-env" 10 30 3>&1- 1>&2- 2>&3-)
+#######################################################################################################################
+       clear
+       echo ""
+       echo "hint: copy your password from your email that o(1)Labs sent to you and paste here , right click paste"
+       echo "you will not see the password is for security reasons"
+       echo ""
+       read -s -p "Enter your Mina wallet password (from your email) that will be saved in ~/.mina-env: " MINAPASS  # >>> asking for your mina wallet password and add it to .mina-env in Home directory
 cat <<EOF >~/.mina-env
 CODA_PRIVKEY_PASS="${MINAPASS}"
 EXTRA_FLAGS=" -file-log-level Info "
@@ -217,6 +233,8 @@ echo  "export MINA_PUBLIC_KEY=${MINAADRESS}" >> "${shell_profile}"
             clear
             echo ""
             echo "DOne, Time to Bootstrap!"
+            echo ""
+            coda version
         ;; 
         
         9)
