@@ -1,6 +1,6 @@
 # MiniNa: Ready to be used with Mina Protocol "TestWorld"
 * you must have a keypairs and password to full use this tool
-MiniNa is a deps Mina Protocol installer , made for Noobs by Noobs
+* MiniNa is a deps Mina Protocol installer , made for Noobs by Noobs
 What the script do:
 [![testworld1.png](https://i.postimg.cc/BZpJsdsq/testworld1.png)](https://postimg.cc/rzDBNZKb)
 
