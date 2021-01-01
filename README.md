@@ -2,7 +2,7 @@
 * you must have a keypairs and password to full use this tool
 * MiniNa is a deps Mina Protocol installer , made for Noobs by Noobs
 What the script do:
-[![testworld1.png](https://i.postimg.cc/BZpJsdsq/testworld1.png)](https://postimg.cc/rzDBNZKb)
+[![Mina-Test-World.png](https://i.postimg.cc/ZKg87sWc/Mina-Test-World.png)](https://postimg.cc/fJcSkKjt)
 
 Usage:
 * First download it ```wget https://raw.githubusercontent.com/AkiAfroo/MiniNa/main/minina.sh```
