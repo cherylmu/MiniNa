@@ -20,7 +20,7 @@ Backup:
 
 Removing Mina from your system
 * ~/.coda-config , keys folder and .mina-env are exclude >> option 9
-[![remove-mina-packages-deps.png](https://i.postimg.cc/3r4Gh646/remove-mina-packages-deps.png)](https://postimg.cc/vDyTL0vL)
+[![ksnip-20210103-151257.png](https://i.postimg.cc/PJ7VNzRm/ksnip-20210103-151257.png)](https://postimg.cc/1Vprj6Pt)
 
 Removing temp directories and coda-config
 * when the daemon stuck sometimes a good option is clean tmp mina folders and ~/.coda-config folder
