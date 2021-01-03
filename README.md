@@ -24,7 +24,7 @@ Removing Mina from your system
 
 Removing temp directories and coda-config
 * when the daemon stuck sometimes a good option is clean tmp mina folders and ~/.coda-config folder
-[![remove-temp-Folders-coda-config.png](https://i.postimg.cc/sfv85p1S/remove-temp-Folders-coda-config.png)](https://postimg.cc/7brmkJ3Y)
+[![ksnip-20210103-151323.png](https://i.postimg.cc/SK4TXKDt/ksnip-20210103-151323.png)](https://postimg.cc/v4PLkGRW)
 
 Notes
 * the script will detect if a wallet is storage in ~/keys folder to avoid overwrite the current ones if you select option 5 my mistake.
