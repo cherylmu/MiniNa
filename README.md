@@ -15,7 +15,7 @@ Usage:
 
 Backup:
 * you can backup your wallet >> option 6
-[![backup-minina.png](https://i.postimg.cc/VLgj6tg0/backup-minina.png)](https://postimg.cc/0b66XbL9)
+[![MININA2-1-BACKUP.png](https://i.postimg.cc/NFCSmw52/MININA2-1-BACKUP.png)](https://postimg.cc/p58sM4QP)
 
 
 Removing Mina from your system
