@@ -36,7 +36,7 @@ options=(1 "Upgrade your Machine" off    # any option can be set to default to "
          3 "Install Mina Dependencies libffi6,libjemalloc,libprocps6,etc." off
          4 "Install Mina-testnet-postake|Mina-generate-keypair" off          
          5 "Download and Unzip your Keys.zip" off
-         6	"BACKUP YOUR KEYS to $HOME/minabackups" off
+         6 "BACKUP YOUR KEYS to $HOME/minabackups" off
          7 "Create a **.mina-env** and **.bashrc/.zshrc** Variables" off
          8 "Download Latest Mina Peers" off
          9 "REMOVE ALL MINA PACKAGES AND DEPS (.coda-config,keys are excluded)" off 
@@ -114,7 +114,7 @@ do
             ;;
         4)
             echo "Installing Mina-testnet-postake|Mina-generate-keypair"
-				TESTNET="$(curl -s https://minaprotocol.com/docs/getting-started | grep 'mina-testnet-postake-medium-curves=')" # >>> was working before.switch to manual 
+				TESTNET="$(curl -s https://minaprotocol.com/docs/connecting | grep 'mina-testnet-postake-medium-curves=')" # >>> was working before.switch to manual 
 					#sudo apt-get install -y curl mina-testnet-postake-medium-curves mina-generate-keypair
 						${TESTNET}
                         sudo apt install mina-generate-keypair
