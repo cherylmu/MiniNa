@@ -5,9 +5,9 @@ What the script do:
 [![Mina-Test-World.png](https://i.postimg.cc/ZKg87sWc/Mina-Test-World.png)](https://postimg.cc/fJcSkKjt)
 
 Usage:
-* First download it ```wget https://raw.githubusercontent.com/AkiAfroo/MiniNa/main/minina.sh```
-* Second: chmod +x minina.sh 
-* third:  bash minina.sh
+* 1. 首先下载 ```wget https://github.com/cherylmu/MiniNa/blob/main/minina_cn.sh```
+* 2. 使用命令: `chmod +x minina_cn.sh `
+* 3. 使用命令:  `bash minina_cn.sh `
 * the script will try to install dialog , zip , unzip if are not installed in your system before launch the menu.
 * Fresh install after menu pop up: select with mouse or moving with arrows and using spacebar
 * options : ```1,2,3,4,5,7,8```
