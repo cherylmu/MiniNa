@@ -19,7 +19,7 @@ else
 fi
 
 #################################################################################################################################################################################
-dialog --backtitle "[ M I n i N A_C N  1.0]" \
+dialog --backtitle "[ M I n i N A_C N  3.0]" \
 --title "About - [ M I n i N A_C N ]" \
 --msgbox 'MiniNA 是一个脚本集合，适用于对linux不太熟悉的人。脚本集合了安装和运行mina节点需要的各种命令。
 ---         ---     --      ---     ----            ----    ----    --  --  ---         -   -   -   ----            ---     --  --          --  -- --   --  --  --  --  --  --  --
@@ -28,17 +28,17 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHO
  DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
  OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.' 0 0
  #################################################################################################################################################################################
-cmd=(dialog --separate-output --checklist "[ M I n i N A 2.1 for TestWorld - by Aki ]:" 0 0 0) \
-options=(1 "Upgrade your Machine" off    # any option can be set to default to "on"
-         2 "Install Mina Repositories" off
-         3 "Install Mina Dependencies libffi6,libjemalloc,libprocps6,etc." off
-         4 "Install Mina-testnet-postake|Mina-generate-keypair" off          
-         5 "Download and Unzip your Keys.zip" off
-         6 "BACKUP YOUR KEYS to $HOME/minabackups" off
-         7 "Create a **.mina-env** and **.bashrc/.zshrc** Variables" off
-         8 "Download Latest Mina Peers" off
-         9 "REMOVE ALL MINA PACKAGES AND DEPS (.coda-config,keys are excluded)" off 
-         10 "REMOVE ~/.coda-config , /tmp/coda_cache_dir , /tmp/s3_cache_dir Folders from your system " off)
+cmd=(dialog --separate-output --checklist "[ M I n i N A 3.0 for TestWorld - by Aki 翻译：Cheryl]:" 0 0 0) \
+options=(1 "更新服务器" off    # any option can be set to default to "on"
+         2 "安装 Mina" off
+         3 "安装 Mina 依赖库 libffi6,libjemalloc,libprocps6,etc." off
+         4 "安装 Mina-testnet-postake|Mina-generate-keypair" off          
+         5 "下载并解压缩私钥 Keys.zip" off
+         6 "备份私钥到 $HOME/minabackups" off
+         7 "创建 **.mina-env** 和 **.bashrc/.zshrc** 变量" off
+         8 "下载最新 Mina Peers" off
+         9 "删除Mina和依赖库(.coda-config,keys除外)" off 
+         10 "删除 ~/.coda-config , /tmp/coda_cache_dir , /tmp/s3_cache_dir" off)
 ###################################################################################################################################################################################
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
@@ -49,19 +49,19 @@ do
             clear
             echo -e " $(tput bold)################################################################################ $(tput sgr0)"
             echo ""
-            echo -e " \e[32m                     MiniNA will Upgrade your system with:"
-            echo "                      sudo apt update && sudo apt upgrade"
-            echo "               That is the First step before install all Mina paCkages"
+            echo -e " \e[32m                     MiniNA 即将更新你的服务器:"
+            echo "                         sudo apt update && sudo apt upgrade"
+            echo "                               这是安装和运行节点的第一步"
             echo -e " $(tput sgr0)"
             echo -e " $(tput bold)################################################################################ $(tput sgr0)"
             echo ""
-            echo "please wait.."
+            echo "请等待.."
             sleep 10
             sudo apt update && sudo apt upgrade -y;
 
             ;;
         2)
-            echo "adding http://packages.o1test.net to mina.list in /etc/apt/sources.list.d folder";
+            echo "添加 http://packages.o1test.net to mina.list 到 /etc/apt/sources.list.d 文件夹";
             #echo "deb [trusted=yes] http://packages.o1test.net release main" | sudo tee /etc/apt/sources.list.d/mina.list 2>/dev/null;
             echo "deb [trusted=yes] http://packages.o1test.net release main" | sudo tee /etc/apt/sources.list.d/mina.list 2>/dev/null
             ;;
@@ -69,16 +69,16 @@ do
             clear
             echo -e " $(tput bold)################################################################################ $(tput sgr0)"
             echo ""
-            echo -e " \e[32m                               Getting Started"
-            echo "                     Lets download Manually some .deb packages!"
+            echo -e " \e[32m                               正在开始"
+            echo "                                   准备下载 .deb 安装包!"
             echo "                                                  "
             echo "                                                  "
             echo -e " $(tput sgr0)"
             echo -e " $(tput bold)################################################################################ $(tput sgr0)"
-            echo "Installing Dependencies..Wait !"
+            echo "正在安装依赖库..请等待 !"
             sleep 5
                 if [  -n "$(uname -a | grep Ubuntu)" ]; then
-                        echo "your system is Based on Ubuntu..Please Wait,.."
+                        echo "你的系统是Ubuntu..请等待..."
                         sleep 5
                         mkdir -p .MiniNA/ubuntudeps;
                         cd .MiniNA/ubuntudeps;
@@ -93,7 +93,7 @@ do
                          rm -rf .MiniNA
                          wait
                 elif [  -n "$(cat /etc/issue | grep Debian)"  ]; then
-                        echo "your system is Based on Debian..Please Wait,.."
+                        echo "你的系统是Debian..请等待..."
                         sleep 5
                         mkdir -p .MiniNA/debiandeps;
                         cd .MiniNA/debiandeps; 
@@ -111,43 +111,41 @@ do
                 fi
             ;;
         4)
-            echo "Installing Mina-testnet-postake|Mina-generate-keypair"
+            echo "安装 Mina-testnet-postake|Mina-generate-keypair"
 				TESTNET="$(curl -s https://minaprotocol.com/docs/connecting | grep 'mina-testnet-postake-medium-curves=')" # >>> was working before.switch to manual 
 					#sudo apt-get install -y curl mina-testnet-postake-medium-curves mina-generate-keypair
 						${TESTNET}
                         sudo apt install mina-generate-keypair
-                        echo "done!"
+                        echo "安装成!"
 						sleep 5
             ;;
         5)
-            echo "Creating Folders and Files "
+            echo "正在创建文件夹和文件 "
                 echo""
-                echo "Creating Key folder with my own hands.."
+                echo "正在创建私钥文件夹.."
                 sleep 3
                 mkdir -p ~/keys
-				echo "Done!"
+				echo "成功!"
 				sleep 2
 				clear
 			if [[ -e $HOME/keys/my-wallet && -e $HOME/keys/my-wallet.pub ]] ;then # >>> check if wallet exist
-				echo "we found a wallet in your system !, if you want to Download a new pairs of Keys please Backup and move those files first"
-				echo " the script will continue but will not pop up the the screen to Download your keys"
-				echo "Please wait 10.."
+				echo "发现已经存在的钱包，如果你想要下载新的钱包，请备份当前钱包并删除"
+				echo "脚本会继续运行"
+				echo "请等待十秒.."
 				sleep 10
 				continue ## >> because one wallet was found the script jump to option 6 if was selected and keep going..
 			else
 				echo -e " $(tput bold)################################################################################ $(tput sgr0)"
 				echo ""
-				echo -e " \e[32m 	This will Download a zip file  two files on your system, ~/keys/my-wallet"
-				echo "     	which contains the encrypted private key and ~/keys/my-wallet.pub"
-				echo "        which contains the public key in plain text. Please store"
-				echo " 	the private key file and password you used in a secure place."
+				echo -e " \e[32m 	下一步会下载两个zip文件到 ~/keys/my-wallet"
+				echo "     	包含了私钥和公钥文件 ~/keys/my-wallet.pub"
 				echo -e " $(tput sgr0)"
 				echo -e " $(tput bold)################################################################################ $(tput sgr0)"
                 echo ""
-				read -n 1 -s -r -p "Press any key to continue"
+				read -n 1 -s -r -p "请按任何键继续..."
                 echo ""
-                echo "now we will download and unzip your keys that o(1)Labs sent to you by email"
-                read -p "Enter Full Url Link of your key.zip: " minakey_email
+                echo "现在会下载O(1)lab发送给你的key文件"
+                read -p "请输入你邮件里收到的链接： " minakey_email
 				echo ""
                 mkdir -p ~/keys
                 curl -o ~/keys/new-keys.zip $minakey_email
@@ -171,7 +169,7 @@ do
 				chmod 600 ~/keys/my-wallet
                 echo ""
                 if [[ -e $HOME/keys/my-wallet && -e $HOME/keys/my-wallet.pub ]] ;then
-                echo "zip Downladed, extracted and permissions set to both files"
+                echo "zip 下载"
                 else
                     echo "something weird has happened. dragons fly around you,"
                 fi    
@@ -180,14 +178,14 @@ do
             ;;
         
         6)
-				echo "lets make a backup of your New wallet Files"
+				echo "备份钱包..."
 				echo ""
 				mkdir -p $HOME/minabackups				
 				DATE=$(date +%Y-%m-%d-%H%M%S)
 				BACKUP_DIR="$HOME/minabackups"
 				SOURCE="$HOME/keys"
 				zip -r -j $BACKUP_DIR/backup-$DATE.tar.gz $SOURCE 2>/dev/null
-				echo "saved to >>> $HOME/minabackup FOLDER"
+				echo "另存到 >>> $HOME/minabackup FOLDER"
                 echo ""
                 echo ""
             ;;
@@ -208,10 +206,9 @@ do
 #######################################################################################################################
        clear
        echo ""
-       echo "hint: copy your password from your email that o(1)Labs sent to you and paste here , right click paste"
-       echo "you will not see the password is for security reasons"
+       echo "提示: 请复制邮件中收到的密码并粘贴到这里"
        echo ""
-       read -s -p "Enter your Mina wallet password (from your email) that will be saved in ~/.mina-env: " MINAPASS  # >>> asking for your mina wallet password and add it to .mina-env in Home directory
+       read -s -p "密码会存到 ~/.mina-env: " MINAPASS  # >>> asking for your mina wallet password and add it to .mina-env in Home directory
 cat <<EOF >~/.mina-env
 CODA_PRIVKEY_PASS="${MINAPASS}"
 EXTRA_FLAGS="  -file-log-level Info -work-selection seq -super-catchup "
@@ -225,22 +222,21 @@ echo  "export MINA_PUBLIC_KEY=${MINAADRESS}" >> "${shell_profile}"
         8)
             clear
             echo ""
-            echo "Downloading Latest Peers.." ### >> dont need it anymore peers are public but works and its cool
+            echo "下载最新的 Peers.." ### >> dont need it anymore peers are public but works and its cool
             wget -O ~/peers.txt https://raw.githubusercontent.com/MinaProtocol/coda-automation/bug-bounty-net/terraform/testnets/testworld/peers.txt
             sleep 3
             clear
             echo ""
-            echo "DOne, Time to Bootstrap!"
+            echo "成功!"
             echo ""
             coda version
         ;; 
         
         9)
             echo ""
-            echo "removing libjemalloc-dev libjemalloc2 libffi6 mina-testnet-postake-medium-curves  mina-generate-keypair that was previously installed"
-            echo "MiniNa will not remove your coda-config,keys folders"
+            echo "删除依赖库"
             echo ""
-            echo "Please Wait.."
+            echo "请等待.."
             sleep 5
             sudo apt purge libjemalloc-dev libjemalloc2 mina-testnet-postake-medium-curves  mina-generate-keypair -y # >>> delete mina-testnet and deps..
             sudo apt autoremove -y 
@@ -248,15 +244,15 @@ echo  "export MINA_PUBLIC_KEY=${MINAADRESS}" >> "${shell_profile}"
             sed -i '/CODA/d' "$shell_profile" 2>/dev/null # >> remove coda Variables from .bashrc
             clear
             echo ""
-            echo "Done! , Mina has gone!"
+            echo "删除成功! "
         ;;
        10)
             echo ""
-            echo "Removing coda-config , and coda temp folders"
+            echo "删除 coda-config , 和 coda temp 文件"
             systemctl --user stop mina 2>/dev/null
             rm -rf ~/.coda-config && rm -rf /tmp/coda_cache_dir && rm -rf /tmp/s3_cache_dir
             clear
-            echo "DONe!"
+            echo "删除成功!"
        ;;
 
 esac
