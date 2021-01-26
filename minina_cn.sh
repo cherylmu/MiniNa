@@ -6,24 +6,22 @@ exists()
 }
 
 if exists dialog; then
-  echo 'dialog exists!'
+  echo '对话框已存在!'
 else
-  echo "installing dialog..wait"
+  echo "正在安装对话框..请等待..."
   sudo apt install dialog -y
 fi
 if exists zip; then
-  echo 'zip exists!'
+  echo 'zip 已存在!'
 else
-  echo "installing zip..wait"
+  echo "正在安装zip..请等待..."
   sudo apt install zip unzip -y
 fi
 
 #################################################################################################################################################################################
-dialog --backtitle "[ M I n i N A  2.0]" \
---title "About - [ M I n i N A ]" \
---msgbox 'MiniNA is a set of scripts that tries to make life easier for newcomers to Mina Protocol and who have never had prior experience with the Linux terminal.
-This script is not related in any way to Mina Protocol.its just a bunch of commands that I (Aki) use personally and want to share with you. 
-if MiniNA works for you? ,  perfect!, if not .. you can improve it or fix it! :D
+dialog --backtitle "[ M I n i N A_C N  1.0]" \
+--title "About - [ M I n i N A_C N ]" \
+--msgbox 'MiniNA 是一个脚本集合，适用于对linux不太熟悉的人。脚本集合了安装和运行mina节点需要的各种命令。
 ---         ---     --      ---     ----            ----    ----    --  --  ---         -   -   -   ----            ---     --  --          --  -- --   --  --  --  --  --  --  --
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
